@@ -9,7 +9,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 
 import javax.swing.*;
 
-@SpringBootApplication
+//@SpringBootApplication
 public class MovieCatalogSwing {
     public static void main(String[] args) {
         //Configuramos el modo oscuro

@@ -14,7 +14,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
 
-@Component
+//@Component
 public class MovieCatalogForm extends JFrame {
     private JPanel panelPrincipal;
     private JTable peliculasTabla;
