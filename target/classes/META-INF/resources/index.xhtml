@@ -30,6 +30,24 @@
                             </div>
 
                         </f:facet>
+
+                        <p:column headerText = "Id">
+                            <h:outputText value ="#{pelicula.idPelicula}"/>
+                        </p:column>
+
+                        <p:column headerText = "Nombre">
+                            <h:outputText value ="#{pelicula.nombre}"/>
+                        </p:column>
+
+                        <p:column headerText = "Año">
+                            <h:outputText value ="#{pelicula.year}"/>
+                        </p:column>
+
+                        <p:column headerText = "Puntuación">
+                            <h:outputText value ="#{pelicula.puntuacion}"/>
+                        </p:column>
+
+
                     </p:dataTable>
 
                 </div>
