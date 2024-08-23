@@ -7,7 +7,34 @@
         <link rel="stylesheet" href="https://unpkg.com/primeflex@latest/primeflex.css"/>
     </h:head>
     <h:body>
-        <h3>Movie Catalog1</h3>
+        <div class = "card">
+            <h:form id = "forma-peliculas">
+                <p:growl id="mensajes" showDetails="true"/>
+                <!-- Menubar -->
+                <div class="card">
+                    <p:menubar>
+                        <p:menuitem value="Inicio" icon="pi pi-fw pi-user"
+                                    update=":forma-peliculas:peliculas-tabla"
+                                    actionListener ="#{indexControlador.cargarDatos}"/>
+                    </p:menubar>
+                </div>
+                <!--DataTable-->
+                <div class = "card">
+                    <p:dataTable value="#{indexControlador.peliculas}" var="pelicula" id="peliculas-tabla" widgetVar="peliculasTabla">
+                        <f:facet name="header">
+                            <div class = "flex justify-content-center flex-wrap card-container yellow-container">
+                                <div class = "flex align-items-center justify-content-center w-20rem h-4rem
+                                                bg-yellow-500 font-bold text-gray-900 border-round m-2">
+                                    <h3>Movie Catalog</h3>
+                                </div>
+                            </div>
+
+                        </f:facet>
+                    </p:dataTable>
+
+                </div>
+            </h:form>
+        </div>
     </h:body>
 
 </h:html>
