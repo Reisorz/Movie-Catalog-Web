@@ -16,6 +16,10 @@
                         <p:menuitem value="Inicio" icon="pi pi-fw pi-user"
                                     update=":forma-peliculas:peliculas-tabla"
                                     actionListener ="#{indexControlador.cargarDatos}"/>
+                        <p:menuitem value="Nueva Película" icon="pi pi-fw pi-plus"
+                                    actionListener="#{indexControlador.agregarPelicula}"
+                                    update=":forma-modal:pelicula-ventana"
+                                    oncomplete="PF('ventanaModalPelicula').show()"/>
                     </p:menubar>
                 </div>
                 <!--DataTable-->

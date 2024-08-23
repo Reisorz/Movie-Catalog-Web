@@ -20,6 +20,7 @@ public class IndexControlador {
     @Autowired
     IPeliculaServicio peliculaServicio;
     private List<Pelicula> peliculas;
+    private Pelicula peliculaSeleccionada;
     private static final Logger logger = LoggerFactory.getLogger(IndexControlador.class);
 
     @PostConstruct
@@ -30,6 +31,10 @@ public class IndexControlador {
     public void cargarDatos() {
         peliculas = peliculaServicio.listarPeliculas();
         peliculas.forEach(pelicula -> logger.info(pelicula.toString()));
+    }
+
+    public void agregarPelicula() {
+        this.peliculaSeleccionada = new Pelicula();
     }
 
 }
