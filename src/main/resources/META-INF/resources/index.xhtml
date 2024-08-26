@@ -56,6 +56,38 @@
 
                 </div>
             </h:form>
+            <h:form id="forma-modal">
+                <p:dialog header="Detalles Película" showEffect="fade"
+                          modal="true" widgetVar="ventanaModalPelicula"
+                          responsive="true">
+                    <p:outputPanel id="pelicula-ventana" class="ui-fluid">
+                        <div class="field">
+                            <p:outputLabel for="nombre">Nombre</p:outputLabel>
+                            <p:inputText id="nombre"
+                                         value="#{indexControlador.peliculaSeleccionada.nombre}"
+                                         required="true"/>
+                        </div>
+                        <div class="field">
+                            <p:outputLabel for="year">Año</p:outputLabel>
+                            <p:inputText id="year"
+                                         value="#{indexControlador.peliculaSeleccionada.year}"/>
+                        </div>
+                        <div class="field">
+                            <p:outputLabel for="puntuacion">Puntuación</p:outputLabel>
+                            <p:inputText id="puntuacion"
+                                         value="#{indexControlador.peliculaSeleccionada.puntuacion}"/>
+                        </div>
+                    </p:outputPanel>
+                    <f:facet name="footer">
+                        <p:commandButton value="Guardar" icon="pi pi-check"
+                                         process="pelicula-ventana @this"
+                                         actionListener="#{indexControlador.guardarPelicula}"/>
+                        <p:commandButton value="Cancelar" icon="pi pi-times"
+                                         onclick="PF('ventanaModalPelicula').hide()"
+                                         class="ui-button-secondary" type="button"/>
+                    </f:facet>
+                </p:dialog>
+            </h:form>
         </div>
     </h:body>
 
