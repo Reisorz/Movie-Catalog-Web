@@ -62,4 +62,15 @@ public class IndexControlador {
         this.peliculaSeleccionada = null;
     }
 
+    public void eliminarPelicula() {
+        logger.info("eliminando pelicula: " + this.peliculaSeleccionada);
+        this.peliculaServicio.eliminarPelicula(this.peliculaSeleccionada);
+        //Eliminar el registro de la lista de peliculas en memoria
+        this.peliculas.remove(this.peliculaSeleccionada);
+        //Reset del objeto de pelicula seleccionada
+        this.peliculaSeleccionada = null;
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Pelicula Eliminada"));
+        PrimeFaces.current().ajax().update("forma-peliculas:mensajes", "forma-peliculas:peliculas-tabla");
+    }
+
 }

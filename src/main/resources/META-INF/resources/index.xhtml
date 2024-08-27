@@ -63,6 +63,16 @@
                                     target="#{indexControlador.peliculaSeleccionada}"/>
                                 <p:resetInput target=":forma-modal:pelicula-ventana"/>
                             </p:commandButton>
+
+                            <p:commandButton value="Eliminar" class="ui-button-danger"
+                                             icon="pi pi-trash"
+                                             process="@this"
+                                             oncomplete="PF('eliminarPeliculaVentana').show()">
+                                <f:setPropertyActionListener
+                                    value="#{pelicula}"
+                                    target="#{indexControlador.peliculaSeleccionada}"/>
+
+                            </p:commandButton>
                         </p:column>
 
                     </p:dataTable>
@@ -100,6 +110,19 @@
                                          class="ui-button-secondary" type="button"/>
                     </f:facet>
                 </p:dialog>
+                <p:confirmDialog widgetVar="eliminarPeliculaVentana"
+                                 showEffect="fade" width="300"
+                                 message="¿Eliminar la película?"
+                                 header="Confirmar" severity="warn">
+                    <p:commandButton value="Si" icon="pi pi-check"
+                                     process="@this"
+                                     actionListener="#{indexControlador.eliminarPelicula}"
+                                     oncomplete="PF('eliminarPeliculaVentana').hide()"/>
+                    <p:commandButton value="No" type="button"
+                                     sytleClass="ui-button-secondary"
+                                     icon="pi pi-times"
+                                     onclick="PF('eliminarPeliculaVentana').hide()"/>
+                </p:confirmDialog>
             </h:form>
         </div>
     </h:body>
