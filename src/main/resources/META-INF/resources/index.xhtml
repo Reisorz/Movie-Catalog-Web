@@ -51,6 +51,19 @@
                             <h:outputText value ="#{pelicula.puntuacion}"/>
                         </p:column>
 
+                        <p:column>
+                            <p:commandButton value="Editar" icon="pi pi-pencil"
+                                             update=":forma-modal:pelicula-ventana"
+                                             process="@this"
+                                             oncomplete="PF('ventanaModalPelicula').show()"
+                                             class="ui-button-primary"
+                                             style="margin-right: .5rem">
+                                <f:setPropertyActionListener
+                                    value="#{pelicula}"
+                                    target="#{indexControlador.peliculaSeleccionada}"/>
+                                <p:resetInput target=":forma-modal:pelicula-ventana"/>
+                            </p:commandButton>
+                        </p:column>
 
                     </p:dataTable>
 

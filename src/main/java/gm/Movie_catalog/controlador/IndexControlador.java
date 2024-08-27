@@ -42,11 +42,16 @@ public class IndexControlador {
 
     public void guardarPelicula(){
         logger.info("pelicula a guardar: " + this.peliculaSeleccionada);
-        //Agregar
+        //Agregar (insert)
         if(this.peliculaSeleccionada.getIdPelicula() == null){
             this.peliculaServicio.guardarPelicula(this.peliculaSeleccionada);
             this.peliculas.add(this.peliculaSeleccionada);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Pelicula Agregada"));
+        }
+        //Modificar (update)
+        else{
+            this.peliculaServicio.guardarPelicula(this.peliculaSeleccionada);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Pelicula Actualizada"));
         }
         //Ocultar la ventana modal
         PrimeFaces.current().executeScript("PF('ventanaModalPelicula').hide()");
