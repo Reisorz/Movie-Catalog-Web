@@ -45,23 +45,18 @@ public class IndexControlador {
         if(!peliculas.isEmpty()) {
             peliculas.forEach(pelicula -> logger.info(pelicula.toString()));
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Pelicula Encontrada"));
-            //Ocultar la ventana modal
-            PrimeFaces.current().executeScript("PF('ventanaModalBuscarPelicula').hide()");
-            //Actualizar la tabla usando ajax
-            PrimeFaces.current().ajax().update("forma-peliculas:mensajes",
-                    "forma-peliculas:peliculas-tabla");
-            //Reset del objeto pelicula seleccionada
-            this.peliculaSeleccionada = null;
         } else if (peliculas.isEmpty()) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Pelicula NO Encontrada"));
             cargarDatos();
-            PrimeFaces.current().executeScript("PF('ventanaModalBuscarPelicula').hide()");
-            //Actualizar la tabla usando ajax
-            PrimeFaces.current().ajax().update("forma-peliculas:mensajes",
-                    "forma-peliculas:peliculas-tabla");
-            //Reset del objeto pelicula seleccionada
-            this.peliculaSeleccionada = null;
         }
+        //Ocultar la ventana modal
+        PrimeFaces.current().executeScript("PF('ventanaModalBuscarPelicula').hide()");
+        //Actualizar la tabla usando ajax
+        PrimeFaces.current().ajax().update("forma-peliculas:mensajes",
+                "forma-peliculas:peliculas-tabla");
+        //Reset del objeto pelicula seleccionada
+        this.peliculaSeleccionada = null;
+
     }
 
     public void agregarPelicula() {

@@ -20,6 +20,10 @@
                                     actionListener="#{indexControlador.agregarPelicula}"
                                     update=":forma-modal:pelicula-ventana"
                                     oncomplete="PF('ventanaModalPelicula').show()"/>
+                        <p:menuitem value="Buscar" icon="pi pi-search"
+                                    actionListener="#{indexControlador.buscarPelicula}"
+                                    update=":forma-modal:pelicula-buscar-ventana"
+                                    oncomplete="PF('ventanaModalBuscarPelicula').show()"/>
                     </p:menubar>
                 </div>
                 <!--DataTable-->
@@ -110,9 +114,29 @@
                                          class="ui-button-secondary" type="button"/>
                     </f:facet>
                 </p:dialog>
+                <p:dialog header="Detalles Película Buscada" showEffect="fade"
+                          modal="true" widgetVar="ventanaModalBuscarPelicula"
+                          responsive="true">
+                    <p:outputPanel id ="pelicula-buscar-ventana" class="ui-fluid">
+                        <div class="field">
+                            <p:outputLabel for="nombreBuscar">Nombre</p:outputLabel>
+                            <p:inputText id="nombreBuscar"
+                                         value="#{indexControlador.peliculaSeleccionada.nombre}"
+                                         required="true"/>
+                        </div>
+                    </p:outputPanel>
+                    <f:facet name="footer">
+                        <p:commandButton value="Buscar" icon="pi pi-check"
+                                         process="pelicula-buscar-ventana @this"
+                                         actionListener="#{indexControlador.listarPeliculaBuscada}"/>
+                        <p:commandButton value="Cancelar" icon="pi pi-times"
+                                         onclick="PF('ventanaModalBuscarPelicula').hide()"
+                                         class="ui-button-secondary" type="button"/>
+                    </f:facet>
+                </p:dialog>
                 <p:confirmDialog widgetVar="eliminarPeliculaVentana"
                                  showEffect="fade" width="300"
-                                 message="¿Eliminar el cliente?"
+                                 message="¿Eliminar la película?"
                                  header="Confirmar" severity="warn">
                     <p:commandButton value="Si" icon="pi pi-check"
                                      process="@this"
